@@ -1,6 +1,5 @@
 FROM golang:1.19-alpine AS golang-builder
-RUN apk --no-cache add build-base git bash nodejs npm && npm install -g pnpm@latest \
-    && make clean build
+RUN apk --no-cache add build-base git bash nodejs npm && npm install -g pnpm@latest
 WORKDIR /work
 COPY ./answer /work/answer
 RUN ./answer build --with github.com/apache/incubator-answer-plugins/cache-redis --with github.com/apache/incubator-answer-plugins/connector-google
