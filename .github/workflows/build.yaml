@@ -25,7 +25,9 @@ jobs:
 
     - name: 复制answer文件到工作目录
       run: |
-        docker run -v "$(pwd)":/target_container apache/answer:latest cp /usr/bin/answer /target_container
+        docker create --name my_temp_container apache/answer:latest
+        docker cp my_temp_container:/usr/bin/answer .
+        docker rm my_temp_container
 
     - name: 构建并推送
       uses: docker/build-push-action@v5
