@@ -28,6 +28,7 @@ jobs:
         docker create --name my_temp_container apache/answer:1.2.1
         docker cp my_temp_container:/usr/bin/answer .
         docker rm my_temp_container
+        ls -lh
 
     - name: 构建并推送
       uses: docker/build-push-action@v5
