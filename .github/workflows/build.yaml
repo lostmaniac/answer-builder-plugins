@@ -23,6 +23,10 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: 复制answer文件到工作目录
+      run: |
+        docker run -v "$(pwd)":/target_container apache/answer:latest cp /usr/bin/answer /target_container
+
     - name: 构建并推送
       uses: docker/build-push-action@v5
       with:
