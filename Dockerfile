@@ -3,7 +3,7 @@ RUN apk --no-cache add build-base git bash nodejs npm && npm install -g pnpm@lat
 RUN mkdir /work
 WORKDIR /work
 COPY ./answer /work/answer
-RUN cd /work && CGO_ENABLED=0 ANSWER_MODULE=github.com/apache/incubator-answer@1.2.0 /work/answer build --with github.com/apache/incubator-answer-plugins/cache-redis --with github.com/apache/incubator-answer-plugins/connector-google
+RUN cd /work && ls -lh && CGO_ENABLED=0 ANSWER_MODULE=github.com/apache/incubator-answer@1.2.0 /work/answer build --with github.com/apache/incubator-answer-plugins/cache-redis --with github.com/apache/incubator-answer-plugins/connector-google
 # RUN cd /work && rm -rf answer && mv new_answer answer && chmod +x answer && ./answer plugin
 
 # FROM apache/answer:1.2.0
