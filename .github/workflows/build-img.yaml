@@ -22,19 +22,20 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
+    - name: 克隆仓库到本地
+      uses: actions/checkout@v3
+      with:
+        repository: apache/incubator-answer
+        ref: v1.2.0
     - name: 复制answer文件到工作目录
       run: |
-        docker create --name my_temp_container apache/answer:1.2.0
-        docker cp my_temp_container:/usr/bin/answer .
-        docker rm my_temp_container
         ls -lh
 
-    - name: 构建并推送
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        file: Dockerfile
-        platforms: linux/amd64
-        push: true 
-        tags: ghcr.io/${{ github.repository }}:latest
+    # - name: 构建并推送
+    #   uses: docker/build-push-action@v5
+    #   with:
+    #     context: .
+    #     file: Dockerfile
+    #     platforms: linux/amd64
+    #     push: true 
+    #     tags: ghcr.io/${{ github.repository }}:latest
