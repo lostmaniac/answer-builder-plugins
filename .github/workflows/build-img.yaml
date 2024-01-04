@@ -22,14 +22,16 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
+
     - name: 克隆仓库到本地
       uses: actions/checkout@v3
       with:
         repository: apache/incubator-answer
         ref: v1.2.0
+
     - name: 复制answer文件到工作目录
       run: |
-        ls -lh
+        echo "" >> 
 
     # - name: 构建并推送
     #   uses: docker/build-push-action@v5
