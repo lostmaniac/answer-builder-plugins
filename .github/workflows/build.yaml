@@ -25,7 +25,7 @@ jobs:
 
     - name: 复制answer文件到工作目录
       run: |
-        docker create --name my_temp_container apache/answer:1.2.1
+        docker create --name my_temp_container apache/answer:1.2.0
         docker cp my_temp_container:/usr/bin/answer .
         docker rm my_temp_container
         ls -lh
